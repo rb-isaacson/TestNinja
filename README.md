@@ -142,6 +142,18 @@ You can use the [Ignore] attribute to temporarilty ignore a test.
 This is a better way then commenting a test out because it will still show up on the results.
 That way you won't lose track of it.
 
+### Core Unit Testing Techniques
+
+1. Testing methods that return a value.
+2. Testing void methods.
+3. Testing methods that throw an exception.
+4. Testing method that raise an event.
+5. Testing private methods.
+
+#### Testing Strings
+
+#### Testing Arrays and Collections
+
 
 
 
