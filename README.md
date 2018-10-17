@@ -1,7 +1,8 @@
 # TestNinja
 ## Unit Testing for C# Developers
 
-### Writing Unit Tests for the Reservation Class Method CanBeCancelledBy
+### Getting Started
+#### Writing Unit Tests for the Reservation Class Method CanBeCancelledBy
 
 The name of the project is TestNinja, so create a project for the unit tests using the convention of TestNinja.UnitTests because
 you want to keep the UnitTests separate from the integration tests.  The unit tests run fast and the integration tests tend to run slower.
@@ -50,9 +51,46 @@ You should have a passing test at this point.
 There are three execution paths for this method, so write two more tests to hit all execution paths.
 Now we have three passing tests.
 
-### Refactoring With Confidence
+#### Refactoring With Confidence
 
 Having unit tests, allows you to refactor with confidence!
+
+#### Using NUnit in Visual Studio
+
+In Package Manager Console, make sure that the Default project is TestNinja.UnitTests, then type
+
+```
+PM> Install-Package NUnit -Version 3.8.1
+PM> Install-Package NUnit3TestAdapter -Version 3.8.0
+```
+Note that if you use ReSharper you don't need to install NUnit3TestAdapter.
+
+| MSTest | NUnit |
+| ---| ---|
+| [TestClass] | [TestFixture] |
+| [TestMethod] | [Test] |
+
+Remove using statement for MSTest so Assert method will resolve properly. Can use:
+
+Assert.IsTrue(result);
+or
+Assert.That(result, Is.True);
+or 
+Assert.That(result == true);
+
+#### Test Driven Development
+
+Test first:
+1. Write a failing test.
+2. Write the simplest code to make the test pass.
+3. Refactor if necessary.
+
+#### Benefits of TDD
+
+1. Testable Source Code
+2. Full Coverage
+3. Simpler Implementation
+
 
 
 
