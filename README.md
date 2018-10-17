@@ -69,6 +69,8 @@ Note that if you use ReSharper you don't need to install NUnit3TestAdapter.
 | ---| ---|
 | [TestClass] | [TestFixture] |
 | [TestMethod] | [Test] |
+| | [SetUp] |
+| | [TearDown] |
 
 Remove using statement for MSTest so Assert method will resolve properly. Can use:
 
@@ -90,6 +92,57 @@ Test first:
 1. Testable Source Code
 2. Full Coverage
 3. Simpler Implementation
+
+### Fundamentals of Unit Testing
+
+#### Characteristics of Good Unit Tests
+
+1. First class citizens
+2. Single Responsibility
+3. Clean, readable, maintainable
+4. No logic
+5. Isolated
+6. Not too specific or too general
+
+#### What to Test and What Not To Test
+
+Test:
+1. Query function--returns a value
+2. Command function--making a change in the system (changing the state of an object in memory, and/or writing to 
+a database, or calling a web service or sending a message to a message queue, etc)
+
+Don't Test:
+1. Language features, for example, if you have a class with lots of properties you don't need to test that the properties
+are being set.
+2. Don't need to test 3rd party code.
+
+#### Naming and Organizing Tests
+
+[MethodName]_[Scenario]_[ExpectedBehavior]
+
+#### Parameterized Tests
+
+With NUnit you can easily parameterize your tests.  With MSTest you have to use spreadsheets!
+
+```
+[Test]
+        [TestCase(2, 1, 2)]
+        [TestCase(1, 2, 2)]
+        [TestCase(1, 1, 1)]
+        public void Max_WhenCalled_ReturnTheGreaterArgument(int a, int b, int expectedResult)
+        {
+            var result = _math.Max(a, b);
+
+            Assert.That(result, Is.EqualTo(expectedResult));
+        }
+```
+#### Ignoring Tests
+
+You can use the [Ignore] attribute to temporarilty ignore a test. 
+This is a better way then commenting a test out because it will still show up on the results.
+That way you won't lose track of it.
+
+
 
 
 
